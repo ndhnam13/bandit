@@ -1,0 +1,1 @@
+sort -c -u data.txt # -c check for sorted input with -u to check for strict ordering
