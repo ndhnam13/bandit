@@ -1,6 +1,6 @@
 nmap -sV localhost -p 31000-32000  #scan multiple ports
 # port 31790 shows ssl/unknown
-openssl s_client -connect localhost -p 31790
+openssl s_client -connect localhost:31790 -quiet # "-quiet" to not get "KEYUPDATE"
 kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
 
 -----BEGIN RSA PRIVATE KEY-----
@@ -32,6 +32,7 @@ vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
 -----END RSA PRIVATE KEY-----
 
 exit the host
-create key.txt with the key in admin folder
+create "sshkey16.private" with the RSA key above
+chmod 700 sshkey16.private # to not get perm error
 
-ssh -i key.txt bandit17@bandit.labs.overthewire.org -p 2220  #solution
+ssh -i sshkey16.private bandit17@bandit.labs.overthewire.org -p 2220  #solution
