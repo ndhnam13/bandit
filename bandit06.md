@@ -9,7 +9,7 @@ Có đến 18 thư mục và chỉ 1 thư mục chứa file đáp án
 # find
 Dùng để tìm file trong các thư mục
 
-# find -type f -size 1033c ! -executable # maybehere07/.file2
+# find -type f -size 1033c ! -executable 
 "-type f": Đây là một file bình thường
 
 ![image](https://github.com/user-attachments/assets/6c4a4a57-1ba3-4f9e-b3d6-b5e54700eb36)
