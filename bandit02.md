@@ -5,4 +5,5 @@ Hiển thị file "-"
 
 # cat ./- 
 
-# ./ for special characters
+# ./ dùng cho ký tự đặc biệt
+Nếu chỉ dùng cat - sẽ báo lỗi
