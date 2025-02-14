@@ -1,0 +1,2 @@
+ls # shows readme
+cat readme # prints out readme's content
