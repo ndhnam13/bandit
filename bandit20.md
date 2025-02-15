@@ -6,6 +6,7 @@ https://en.wikipedia.org/wiki/Setuid
 ![image](https://github.com/user-attachments/assets/27f6da58-8836-48a1-a40d-2ef052130096)
 
 Thấy rằng user bandit20 có quyền đọc và viết file "bandit20-do" và group bandit19 có quyền đọc và chạy nó
+
 Chữ "s" trong phần "-rws" của user bandit20 là setuid tức là nếu user bandit19 chạy file "bandit20-do" thì sẽ được chạy dưới quyền của user bandit20
 
 ![image](https://github.com/user-attachments/assets/32710db6-91b5-461e-bd5a-b1a3cefca105)
