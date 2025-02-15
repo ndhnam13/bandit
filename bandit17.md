@@ -1,5 +1,9 @@
-nmap -sV localhost -p 31000-32000  #scan multiple ports
-# port 31790 shows ssl/unknown
+![image](https://github.com/user-attachments/assets/d9d33cc3-fdac-4f6c-9174-591234fdf755)
+
+# Quét port sử dụng "nmap"
+Quét tất cả các port từ 31000-32000
+
+port 31790 hiện ssl/unknown
 openssl s_client -connect localhost:31790 -quiet # "-quiet" to not get "KEYUPDATE"
 kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
 
