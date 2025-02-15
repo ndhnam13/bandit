@@ -1,5 +1,7 @@
 ![image](https://github.com/user-attachments/assets/d9d33cc3-fdac-4f6c-9174-591234fdf755)
 
+https://en.wikipedia.org/wiki/Port_scanner
+
 # Quét port sử dụng "nmap"
 Lựa chọn "-sV" để quét "dịch vụ/ phiên bản" tất cả các port từ 31000-32000 để tìm port chạy dịch vụ ssl/tsl 
 
