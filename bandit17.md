@@ -1,42 +1,22 @@
 ![image](https://github.com/user-attachments/assets/d9d33cc3-fdac-4f6c-9174-591234fdf755)
 
 # Quét port sử dụng "nmap"
-Quét tất cả các port từ 31000-32000
+Lựa chọn "-sV" để quét "dịch vụ/ phiên bản" tất cả các port từ 31000-32000 để tìm port chạy dịch vụ ssl/tsl 
 
-port 31790 hiện ssl/unknown
-openssl s_client -connect localhost:31790 -quiet # "-quiet" to not get "KEYUPDATE"
-kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+![image](https://github.com/user-attachments/assets/dce2fac5-c4e4-4659-ba9f-8281d7ba746f)
 
------BEGIN RSA PRIVATE KEY-----
-MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
-imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
-Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
-DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
-JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
-x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
-KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
-J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
-d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
-YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
-vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
-+TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
-8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
-SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
-HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
-SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
-R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
-Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
-R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
-L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
-blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
-YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
-77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
-dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
-vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
------END RSA PRIVATE KEY-----
+port 31518 hiện ssl/echo và 31790 hiện ssl/unknown
 
-exit the host
-create "sshkey16.private" with the RSA key above
-chmod 700 sshkey16.private # to not get perm error
+Ta sẽ loại port 31518 vì "echo" in ra những gì mà người dùng nhập vào
 
-ssh -i sshkey16.private bandit17@bandit.labs.overthewire.org -p 2220  #solution
+# openssl s_client -connect localhost:31790 -quiet
+"-quiet" để không hiện "KEYUPDATE" và in ra private key
+
+![image](https://github.com/user-attachments/assets/842e9334-0d31-4241-a629-0ccc27a3ee88)
+
+# Exit và tạo 1 file "ssh16key.private" để đăng nhập vào level tiếp theo bằng private key
+Cho nội dung của rsa private key vào trong file
+
+![image](https://github.com/user-attachments/assets/409e2489-c06c-4e62-8199-95f4e2a86524)
+
+# ssh -i sshkey16.private bandit17@bandit.labs.overthewire.org -p 2220
