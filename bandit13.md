@@ -1,35 +1,58 @@
-mktemp -d #creates new dir
-cd /tmp/tmp.xxxxx
-cp ~/data.txt .  #copy data.txt to . dir
-mv data.txt hxd  #change file name to revert hexdump
-xxd -r hxd compressed  #revert hxd to binary making it easier to decompress
+![image](https://github.com/user-attachments/assets/4b185e59-af09-41c9-990c-c379ff629d76)
 
-xxd compressed | head  #looking at the file can see "1f8b"-gzip signature => using gzip function to decompress
-mv compressed compressed.gz  #change to gzip file to decompress
-gzip -d compressed.gz  # "-d" to decompressed
+https://en.wikipedia.org/wiki/Hex_dump
 
-xxd compressed  # The hex dump shows "425a"-bzip2 signature
-mv compressed compressed.bz2
-bzip2 -d compressed.bz2 
-xxd compressed | head  # This shows data4.bin with gzip signature but we can use tar to extract the data4.bin then archive
+# Ở level này, data.txt là hexdump của 1 file đã bị nén nhiều lần
 
-mv compressed compressed.tar
-tar -xf compressed.tar  # -x: extract, f to archive, we have data5.bin now  
+# Tải data.txt về máy để xử lí
+![image](https://github.com/user-attachments/assets/8019a3c6-59f1-41ae-b724-af8ddb908ad5)
 
-xxd data5.bin | head #see data6.bin
-mv data5.bin data5.tar
-tar -xf data5.tar  # Now see data6.bin
+![image](https://github.com/user-attachments/assets/f5376745-a920-4bc7-816b-6050fc91a1c8)
 
-xxd data6.bin | head #bzip2 signature
-mv data6.bin data6.bz2
-bzip2 -d data6.bz2
+# Ở level này, data.txt là hexdump của 1 file đã bị nén nhiều lần
+Nên nếu tìm ra đáp án thì sẽ phải chuyển đổi file hexdump về file gốc rồi giải nén chúng ra
 
-xxd data6 | head # data8.bin, no signature can use tar
-mv data6 data6.tar
-tar -xf data6.tar #extracted data8.bin
+# xxd -r data.txt > data1
+Câu lệnh "xxd -r" đảo ngược hexdump về file nhị phân và lưu kết quả vào file data1
+Nếu không dùng dấu ">" thì "xxd -r" sẽ chỉ in ra kết quả trong terminal
 
-xxd data8.bin | head #gzip signature
-mv data8.bin data8.gz
-gzip -d data8.gz  #decompressed to data8
+![image](https://github.com/user-attachments/assets/0a6cc112-7827-4866-8142-6bcda3a73507)
 
-cat data8  # solution
+# file data1
+![image](https://github.com/user-attachments/assets/2471de82-9c1f-425c-97b4-d272dba1c81c)
+
+Kết quả cho thấy đây là fiel gzip được nén
+
+# Giải nén file gzip(.gz) bằng "gzip -d"
+Đổi tên thành "data1.gz" để giải nén
+
+![image](https://github.com/user-attachments/assets/97849302-ec1d-4621-9d8d-6e3c2fd93237)
+
+Bây giờ data1 đã trở thành file bzip2  
+
+![image](https://github.com/user-attachments/assets/674a9b6e-8161-4934-9457-b29f3bce0355)
+
+# Giải nén file bzip2(.bz2) bằng "bzip2 -d"
+![image](https://github.com/user-attachments/assets/79bec20f-9649-4503-b96b-d5f8043b05e0)
+
+Sau đó lại tiếp tục giải nén file gzip
+
+![image](https://github.com/user-attachments/assets/5efd0104-9e76-4eb3-9406-fc96122f7b83)
+
+Đến đây có một file mới là tar(.tar)
+# Giải nén file tar(.tar) bằng "tar -x -f"
+![image](https://github.com/user-attachments/assets/37aca44b-c5a6-4817-87f4-562d9add5c76)
+
+![image](https://github.com/user-attachments/assets/61573d75-7008-4189-b726-85ee23fa2e4e)
+
+![image](https://github.com/user-attachments/assets/b59fd4ae-70a6-475b-9172-3923ac2bcca2)
+
+Ta có data6.bin là file bzip2
+
+# Tiếp tục giải nén các file tar, gzip và bzip2 
+![image](https://github.com/user-attachments/assets/269e3cc2-c98b-4a39-bf02-72113314f4d2)
+
+Ta được file data8: ASCII text. File gốc chứa đáp án
+
+# cat data8  
+![image](https://github.com/user-attachments/assets/bdec30a2-7d64-4306-aedc-862aabfaaf12)
