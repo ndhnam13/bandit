@@ -19,4 +19,4 @@ Cho nội dung của rsa private key vào trong file
 
 ![image](https://github.com/user-attachments/assets/409e2489-c06c-4e62-8199-95f4e2a86524)
 
-# ssh -i sshkey16.private bandit17@bandit.labs.overthewire.org -p 2220
+# ssh -i ssh16key.private bandit17@bandit.labs.overthewire.org -p 2220
