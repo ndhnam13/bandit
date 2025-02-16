@@ -10,3 +10,5 @@ Port 1234 đang ở trạng thái listening (-l) và được đưa vào backgro
 Chạy "suconnect" sẽ kết nối đến localhost và chờ nhận dữ liệu từ port 1234
 
 Nếu dữ liệu nhận được từ port 1234 chứa đúng mật khẩu của bandit20, chương trình sẽ xác thực và in ra mật khẩu của bandit21
+
+![image](https://github.com/user-attachments/assets/a172c475-0745-4468-807e-00c40bd63302)
