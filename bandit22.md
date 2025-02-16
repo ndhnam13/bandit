@@ -1,10 +1,22 @@
-cd /etc/cron.d
-cat cronjob_bandit22
-# @reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null    # &> /dev/null will suppress all output because cron runs in the background
-# * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null  # 5 * symbols mean the process runs every minute every day
-cat /usr/bin/cronjob_bandit22.sh # To look what the file does
-# #!/bin/bash
-# chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
-# cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
-# This create a "tmp" file then gives read permission to everyone, then copy pw of bandit22 to the file
-cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv # Solution
+![image](https://github.com/user-attachments/assets/de066524-124a-405d-ab99-8ee8fa45fb57)
+
+# Xem file cronjob_bandit22 trong thư mục /etc/cron.d/
+![image](https://github.com/user-attachments/assets/7af1debe-8128-4cd8-919d-1f219dbe479d)
+
+"@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null"    
+
+- "&> /dev/null" Chuyển mọi output của chương trình vào /dev/null => Không hiển thị gì
+
+"* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null"
+
+- 5 dấu "*" có nghĩa là file này sẽ chạy 1 lần/phút
+
+# Tạo 1 file bash để lưu lại dữ liệu của "cronjob_bandit22.sh"
+
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+Tạo file trong thư mục /tmp/ cho mọi người dùng quyền đọc rồi lưu dữ liệu của file "bandit22" vào file mới
+
+# cat /tmp/newpass 
