@@ -1,6 +1,12 @@
-#"makes a connection to localhost on the port you specify as a commandline argument" this means we have to run a cmd that create a server on local host, we can do that using nc
-echo -n 'previous bandit lv pw' | nc -l -p 1234 &
-# echo to print out the line, -n to prevent new line char when we press enter
-# -l means the port is in listening state and "&" so it will run in the background
-./suconnect 1234
-# if we head suconnect we can see that it will connect to a tcp port and if the pw is correct, it will foward the new pw for the next lv into /home/etc/bandit_pass/bandit21 
+![image](https://github.com/user-attachments/assets/578c5e25-d50e-4c1b-abd1-5f5c2131d082)
+
+# Tạo một server lắng nghe trên một port bất kỳ
+In ra mật khẩu của lv trước ("-n" để không in ký tự xuống dòng) vào port 1234
+
+Port 1234 đang ở trạng thái listening (-l) và được đưa vào background "&" để thực hiện lệnh tiếp theo trong terminal
+![image](https://github.com/user-attachments/assets/7d3295d0-3f66-481f-a6ff-fffe5cf4324a)
+
+# ./suconnect 1234
+Chạy "suconnect" sẽ kết nối đến localhost và chờ nhận dữ liệu từ port 1234
+
+Nếu dữ liệu nhận được từ port 1234 chứa đúng mật khẩu của bandit20, chương trình sẽ xác thực và in ra mật khẩu của bandit21
