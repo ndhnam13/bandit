@@ -11,12 +11,16 @@
 
 - 5 dấu "*" có nghĩa là file này sẽ chạy 1 lần/phút
 
-# Tạo 1 file bash để lưu lại dữ liệu của "cronjob_bandit22.sh"
+- File "cronjob_bandit22.sh" sẽ chạy 1p/lần nhưng sẽ không in ra output
 
-#!/bin/bash
-chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
-cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+# Kiểm tra file "cronjob_bandit22.sh"
 
-Tạo file trong thư mục /tmp/ cho mọi người dùng quyền đọc rồi lưu dữ liệu của file "bandit22" vào file mới
+![image](https://github.com/user-attachments/assets/5d45dd35-0fdb-45c2-bbe9-aa650b8c2be3)
 
-# cat /tmp/newpass 
+File này tạo file trong thư mục /tmp/ cho mọi người dùng quyền đọc rồi lưu dữ liệu của file "bandit22" vào file mới ở /tmp/...
+
+Vậy ta chỉ cần đọc file /tmp/... sẽ ra đáp án
+
+# cat /tmp/...
+
+![image](https://github.com/user-attachments/assets/ba083745-2e2c-4293-acaf-9441dba7366f)
