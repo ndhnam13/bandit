@@ -1,5 +1,7 @@
 ![image](https://github.com/user-attachments/assets/c29adaaf-5a11-4f45-b69b-974956b7353a)
 
+https://git-scm.com/docs/git
+
 # git
 git thường được sử dụng để theo dõi các thay đổi trong mã nguồn trong quá trình phát triển phần mềm
 
