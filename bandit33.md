@@ -1,6 +1,11 @@
 ![image](https://github.com/user-attachments/assets/b327f834-cd0b-4c99-8d4e-05c43b0943fd)
 
+
 Tham khảo tài liệu: https://www.gnu.org/software/bash/manual/html_node/Shell-Parameters.html
+
+https://unix.stackexchange.com/questions/280454/what-is-the-meaning-of-0-in-the-bash-shell
+
+https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export
 
 # Không phải shell bình thường
 ![image](https://github.com/user-attachments/assets/7ecfe5cc-bf9b-481c-9abd-cf94fd0f44cf)
@@ -35,10 +40,25 @@ Từ các tìm hiểu trên ta chắc chắn rằng câu lệnh của "uppershel
 ![image](https://github.com/user-attachments/assets/7ecfe5cc-bf9b-481c-9abd-cf94fd0f44cf)
 
 # Shell parameter
+![image](https://github.com/user-attachments/assets/e3b423c3-e3ac-4d85-9c8e-7b2357ecb8be)
+
+`$0`: Trả về tên của shell, shell script(.sh) hoặc câu lệnh thực thi, như trong ví dụ trên thì là "./test"
+
+`$1, 2, 3`: Argument thứ 1, 2, 3 lần lượt là 'hi', 'hello', 'bye' được truyền vào script
+
+`$@`: Tất cả các argument
 
 # Thoát khỏi "UPPERCASE HELL"
-Dùng lệnh "$0"
+![image](https://github.com/user-attachments/assets/c2c39a7d-a961-47ae-a02b-af9a20da565d)
 
-Và sau đó có thể chạy các lệnh bình thường qua shell "sh" hoặc ta có thể nhập "bash" để đọc mật khẩu qua "bash"
+"uppershell" đã chạy câu lệnh `sh -c LS` - Không hợp lệ
+
+Dùng lệnh "$0" - Như ta biết parameter chỉ lệnh thực thi và lệnh thực thi ở đây là sh vậy nên khi nhập `$0` vào terminal câu lệnh này sẽ được thực thi `sh -c sh`, ví dụ:
+
+![image](https://github.com/user-attachments/assets/b5f8c44f-5673-4128-9591-d9d427e317b9)
+
+Vậy khi nhập `$0` ta sẽ mở shell sh và thành công thoát khỏi uppershell
+
+Và sau đó có thể chạy các lệnh bình thường qua shell sh hoặc ta có thể nhập `bash` để đọc mật khẩu qua shell bash
 
 ![image](https://github.com/user-attachments/assets/63c1a017-4302-45db-9baa-ac54568c2283)
