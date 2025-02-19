@@ -31,4 +31,4 @@ Sau khi trước khi push phải có "git add" và "git commit"
 
 ![image](https://github.com/user-attachments/assets/729645df-137f-442f-9e31-641a73e457c9)
 
-"git push" xác nhận và cập nhật repo
+"git push" đẩy các commit lên repo
