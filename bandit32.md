@@ -22,4 +22,6 @@ Sau khi trước khi push phải có "git add" và "git commit"
 
 ![image](https://github.com/user-attachments/assets/aaee6c7f-1f7a-4e25-959e-8e93690f901a)
 
+"-m" để thêm comment khi commit
+
 ![image](https://github.com/user-attachments/assets/729645df-137f-442f-9e31-641a73e457c9)
