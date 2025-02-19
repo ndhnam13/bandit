@@ -1,11 +1,21 @@
 ![image](https://github.com/user-attachments/assets/b327f834-cd0b-4c99-8d4e-05c43b0943fd)
 
-
 Tham khảo tài liệu: https://www.gnu.org/software/bash/manual/html_node/Shell-Parameters.html
 
 https://unix.stackexchange.com/questions/280454/what-is-the-meaning-of-0-in-the-bash-shell
 
 https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export
+
+# Tóm tắt
+Khi login bào "bandit32" sẽ sử dụng shell "uppershell" thay vì shell bình thường
+
+"uppershell" biến mọi câu lệnh nhập vào thành chữ in hoa VD: nhập `ls` thành `LS`
+
+"uppershell" chạy lệnh `sh -c <INPUT>`
+
+`$0` là một parameter đặc biệt trả về tên của shell hoặc lệnh thực thi
+
+Nhập `$0` = `sh -c sh` đưa ta vào shell sh từ đó đọc mật khẩu của "bandit33"
 
 # Không phải shell bình thường
 ![image](https://github.com/user-attachments/assets/7ecfe5cc-bf9b-481c-9abd-cf94fd0f44cf)
@@ -48,6 +58,17 @@ Từ các tìm hiểu trên ta chắc chắn rằng câu lệnh của "uppershel
 
 `$@`: Tất cả các argument
 
+# Chuyển đổi giữa các shell
+Có thể xem máy của mình có những shell nào bằng `cat /etc/shells`
+
+![image](https://github.com/user-attachments/assets/86089d53-ef79-4620-9437-9c1c950f0786)
+
+Chuyển đổi giữa các shell bằng cách nhập tên chúng vào terminal
+
+![image](https://github.com/user-attachments/assets/e44b2d4b-bee9-4839-8c18-aa7d0e41f912)
+
+Có thể sử dụng tính năng này để thoát khỏi shell "uppershell"
+
 # Thoát khỏi "UPPERCASE HELL"
 ![image](https://github.com/user-attachments/assets/c2c39a7d-a961-47ae-a02b-af9a20da565d)
 
@@ -62,3 +83,29 @@ Vậy khi nhập `$0` ta sẽ mở shell sh và thành công thoát khỏi upper
 Và sau đó có thể chạy các lệnh bình thường qua shell sh hoặc ta có thể nhập `bash` để đọc mật khẩu qua shell bash
 
 ![image](https://github.com/user-attachments/assets/63c1a017-4302-45db-9baa-ac54568c2283)
+
+# Cách 2
+```
+export LC_ESCAPE=bash
+ssh -o SendEnv=LC_ESCAPE bandit32@bandit.labs.overthewire.org -p 2220
+
+WELCOME TO UPPERSHELL
+>> $LC_ESCAPE
+```
+Vì "uppershell" biến mọi input của ta thành chữ hoa nên ta sx đặt biến môi trường "LC_ESCAPE" có giá trị là "bash"
+
+Trong https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export nhắc đến nếu tên của một biến được nối tiếp bằng "=abc" thì "biến=abc" khi gọi biến thì sẽ phải thêm "$" đằng trước `$biến`
+
+![image](https://github.com/user-attachments/assets/c9292e6f-8b31-4d5f-bbd7-2f1d8fb5ed5d)
+
+`SendEnv` là một tuỳ chọn trong `-o` của `ssh` để gửi các biến môi trường từ local -> remote, máy chủ phải có cấu hình "AcceptEnv" để nhận biến
+
+![image](https://github.com/user-attachments/assets/8896332d-5d24-443e-93fa-da0a239dd5ed)
+
+![image](https://github.com/user-attachments/assets/63790b64-e1d6-443c-a791-ede68f0e2ec0)
+
+![image](https://github.com/user-attachments/assets/6fc7bb43-f6df-4694-909b-cd7f8b2961ad)
+
+`"$LC_ESCAPE" = bash` khi nhập vào sẽ đưa ta vào shell bash 
+
+Dường như chỉ có biến `LC_ESCAPE` là dùng được còn đặt tên khác thì không được(??????????)
